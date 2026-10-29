@@ -1,0 +1,1 @@
+{"name":"hearthline-3d","private":true,"type":"module","scripts":{"check":"node tools/check.mjs"}}

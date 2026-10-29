@@ -1,0 +1,62 @@
+{
+  "source": "tools/build_characters.py",
+  "license": "Original project assets; no third-party meshes or textures",
+  "workflow": "Import GLB into Blender, edit mesh/weights/clips; export glTF2.0 with skin/animations and unchanged bone/clip names. Cabin stages remain Damaged/HomeI/HomeII.",
+  "actors": [
+    {
+      "file": "assets\\characters\\mara.glb",
+      "bytes": 711132,
+      "triangles": 3238,
+      "joints": 18,
+      "clips": [
+        "idle",
+        "walk",
+        "carry",
+        "work",
+        "attack",
+        "hit",
+        "celebrate",
+        "deliver",
+        "attack_spear",
+        "attack_bow",
+        "attack_sword"
+      ],
+      "sha256": "97dac7b28363dfc9bd50765744541df2d2e9caf0121b0a0fba92243c89fdea6f"
+    },
+    {
+      "file": "assets\\characters\\rowan.glb",
+      "bytes": 702144,
+      "triangles": 3188,
+      "joints": 18,
+      "clips": [
+        "idle",
+        "walk",
+        "carry",
+        "work",
+        "attack",
+        "hit",
+        "celebrate",
+        "deliver",
+        "attack_spear",
+        "attack_bow",
+        "attack_sword"
+      ],
+      "sha256": "3dc97545e33edbe328b046790656f63d0f1ed2e72f687eb554cfa50715ccb14e"
+    }
+  ],
+  "building": {
+    "file": "assets\\buildings\\cabin.glb",
+    "bytes": 198984,
+    "stages": [
+      "Damaged",
+      "HomeI",
+      "HomeII"
+    ],
+    "triangles": [
+      576,
+      600,
+      648
+    ],
+    "sha256": "fdbcd9b88e443ef743819c14a16a53b7c49d0df762ec3ea20952755ca7d882a2"
+  }
+}

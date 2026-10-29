@@ -1,0 +1,16 @@
+node_modules/
+server.*.log
+__pycache__/
+screenshots/*
+!screenshots/82-quick-opening-390x844.png
+AI-HANDOFF.md
+ART-DIRECTION.md
+EXPANSION-PLAN.md
+GAME-RULES.md
+PLAYER-EXPERIENCE-AUDIT.md
+VISUAL-GALLERY.html
+VISUAL-REVIEW.md
+classic-reference-hashes.json
+tools/build_*.py
+tools/native-capture.js
+tools/protect_classic.py

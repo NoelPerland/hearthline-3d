@@ -1,0 +1,15 @@
+{
+  "source": "tools/build_wolf.py",
+  "license": "Original project asset",
+  "bytes": 284628,
+  "triangles": 1385,
+  "joints": 13,
+  "clips": [
+    "idle",
+    "run",
+    "bite",
+    "hit",
+    "retreat"
+  ],
+  "sha256": "b4bd354904fb9031d15ec5a51783ad3159a74be481cde43168c5824d6d345960"
+}
