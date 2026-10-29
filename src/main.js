@@ -147,5 +147,6 @@ function renderInventory(){
 function closeInventory(){$('inventory').hidden=true;keys.clear();$('inventory-open').focus();}
 function openInventory(){if(!started||!$('welcome').hidden)return;keys.clear();stick=null;stickVector=[0,0];$('joystick').hidden=true;renderInventory();$('inventory').hidden=false;$('inventory').querySelector('.close').focus();}
 $('inventory-open').onclick=openInventory;
+document.addEventListener('visibilitychange',()=>{if(!document.hidden&&!$('inventory').hidden)renderInventory();});
 $('inventory').onclick=e=>{if(e.target.closest('[data-close-inventory]'))closeInventory();const button=e.target.closest('[data-inventory-equip]');if(button&&!button.disabled){s.weapons.equipped=button.dataset.inventoryEquip;commit();renderInventory();}};
 addEventListener('keydown',e=>{if(e.key.toLowerCase()==='i'){e.preventDefault();$('inventory').hidden?openInventory():closeInventory();}if(!$('inventory').hidden&&e.key==='Escape')closeInventory();if(!$('inventory').hidden&&e.key==='Tab'){const items=[...$('inventory').querySelectorAll('button:not(:disabled)')].filter(b=>b.offsetParent!==null),first=items[0],last=items.at(-1);if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}}});
