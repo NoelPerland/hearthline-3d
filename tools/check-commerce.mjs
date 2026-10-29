@@ -1,8 +1,8 @@
 import assert from 'node:assert/strict';
-import * as core from '../src/core.js?v=45';
-import * as market from '../src/commerce.js?v=45';
-import * as nav from '../src/navigation.js?v=45';
-import {TREES} from '../src/forest.js?v=45';
+import * as core from '../src/core.js?v=47';
+import * as market from '../src/commerce.js?v=47';
+import * as nav from '../src/navigation.js?v=47';
+import {TREES} from '../src/forest.js?v=47';
 
 const ready=()=>{const s=core.initial();Object.assign(s,{stage:3,level:3,workers:1,axeSharp:true,axeSpin:true,axeTriple:true,watchWon:true,mill:2,home3:true,forge:true,frontierWon:true,freightWinch:true,wood:100,food:100,gold:300});s.forest.cleared=TREES.map(t=>t.id);s.town.stage=s.town.jobsDone=4;Object.assign(s.expansion,{post:true,bridge:3,breaker:true,outpost:4});s.weapons.spear=2;s.orders.enabled=false;return s;};
 let s=ready();assert.equal(core.offer(s).action,'commerce_market');const initialGold=s.gold;

@@ -1,1 +1,2 @@
-{"name":"hearthline-3d","private":true,"type":"module","scripts":{"check":"node tools/check.mjs"}}
+{"name":"hearthline-3d","private":true,"type":"module","scripts":{"check":"node tools/check.mjs && node tools/check-movement.mjs"}}
+

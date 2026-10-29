@@ -1,6 +1,6 @@
-import {COMMERCE_LOCATIONS,COMMERCE_RECIPES} from './commerce.js?v=45';
-import {groundHeight} from './forest.js?v=45';
-import {route,pointOn,distance} from './navigation.js?v=45';
+import {COMMERCE_LOCATIONS,COMMERCE_RECIPES} from './commerce.js?v=47';
+import {groundHeight} from './forest.js?v=47';
+import {route,pointOn,distance} from './navigation.js?v=47';
 
 export function makeCommerceView(world,{group,cube,mesh,roof,lamp,supplyPad,batch},reduced){
  const district=group(world),buildings={},stages={},at=(p,x,z)=>{const g=group(p,x,z);g.position.y=groundHeight(x,z);return g;};

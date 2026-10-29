@@ -1,8 +1,8 @@
-import {route,distance,walkable,pointOn} from './navigation.js?v=45';
-import {axeStats,weaponStats} from './core.js?v=45';
-import {sweepPass,clearedCount} from './forest.js?v=45';
-import {clear} from './navigation.js?v=45';
-import {townUnlocked,CONVOY_ROUTES} from './town.js?v=45';
+import {route,distance,walkable,pointOn} from './navigation.js?v=47';
+import {axeStats,weaponStats} from './core.js?v=47';
+import {sweepPass,clearedCount} from './forest.js?v=47';
+import {clear} from './navigation.js?v=47';
+import {townUnlocked,CONVOY_ROUTES} from './town.js?v=47';
 const TAU=Math.PI*2,spawns=[[-8,-4],[8,-6],[0,8]],approaches=[[-1.05,1.15],[1.05,1.15],[0,2.2]];
 function encounter(frontier){return {frontier,status:'active',time:0,warmth:100,maxWarmth:100,spawned:0,kills:0,cooldown:0,pending:null,projectiles:Array.from({length:4},()=>({active:false})),enemies:Array.from({length:6},()=>({active:false,hp:0,position:[0,0],path:[],lastTurn:-1,attack:0,hit:0,retreat:0,repath:0}))};}
 export function beginWatch(s,frontier=false){return (frontier?s.forge&&!s.frontierWon&&clearedCount(s)>=50&&['spear','bow','sword'].some(k=>s.weapons[k]):s.axeSpin&&!s.watchWon)?encounter(frontier):null;}

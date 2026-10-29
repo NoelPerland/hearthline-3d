@@ -1,8 +1,8 @@
 import assert from 'node:assert/strict';
-import * as c from '../src/core.js?v=45';
-import * as f from '../src/forest.js?v=45';
-import * as n from '../src/navigation.js?v=45';
-import * as x from '../src/expansion.js?v=45';
+import * as c from '../src/core.js?v=47';
+import * as f from '../src/forest.js?v=47';
+import * as n from '../src/navigation.js?v=47';
+import * as x from '../src/expansion.js?v=47';
 const camp=()=>{const s=c.initial();Object.assign(s,{stage:3,level:3,workers:1,axeSharp:true,axeSpin:true,axeTriple:true,watchWon:true,mill:2,home3:true,forge:true,frontierWon:true,freightWinch:true,wood:600,food:600,gold:600});s.forest.cleared=f.TREES.map(t=>t.id);s.town.stage=s.town.jobsDone=4;s.weapons.spear=2;return s;};
 let s=camp();n.setNavigationState(s);assert.equal(c.offer(s).action,'trade');assert(!n.walkable([-18,3.3]));assert(c.purchase(s,'trade'));assert.equal(c.shipmentRecipe(s,'wood').gold,6);assert.equal(c.shipmentRecipe(s,'mixed').gold,12);assert(c.offer(s).gated);c.shipWood(s);c.advance(s,9);assert.equal(s.expansion.contracts,3);assert(!c.offer(s).gated);
 for(let i=0;i<3;i++){assert.equal(c.offer(s).action,'bridge'+i);assert(n.route([0,3.5],x.EXP_LOCATIONS.bridge).length);assert(c.purchase(s,'bridge'+i));assert(!c.purchase(s,'bridge'+i));}

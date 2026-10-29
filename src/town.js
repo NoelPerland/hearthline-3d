@@ -1,4 +1,4 @@
-import {clearedCount,JOB_TREES} from './forest.js?v=45';
+import {clearedCount,JOB_TREES} from './forest.js?v=47';
 
 export const LODGE=[-7,-6.5],LODGE_APPROACH=[-7,-4.75];
 export const JOB_TYPES=['timber','convoy','supply'];

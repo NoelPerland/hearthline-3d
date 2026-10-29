@@ -2,11 +2,11 @@ import * as THREE from 'three';
 import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
 import {clone} from 'three/addons/utils/SkeletonUtils.js';
 import {RoundedBoxGeometry} from 'three/addons/geometries/RoundedBoxGeometry.js';
-import {groundHeight} from './forest.js?v=45';
+import {groundHeight} from './forest.js?v=47';
 const actorAssets=new Map();
 
 export async function loadActor(name,scene,palette){
- if(!actorAssets.has(name))actorAssets.set(name,new GLTFLoader().loadAsync('assets/characters/'+name+'.glb?v=45'));
+ if(!actorAssets.has(name))actorAssets.set(name,new GLTFLoader().loadAsync('assets/characters/'+name+'.glb?v=47'));
  const source=await actorAssets.get(name),gltf={...source,scene:clone(source.scene)};
  const root=new THREE.Group();root.name=name;root.add(gltf.scene);scene.add(root);gltf.scene.scale.setScalar(1.14);
  gltf.scene.traverse(o=>{if(o.isMesh){o.castShadow=true;o.receiveShadow=true;o.frustumCulled=false;}});
@@ -49,7 +49,7 @@ export async function loadActor(name,scene,palette){
 }
 
 export async function loadWolves(scene){
- const gltf=await new GLTFLoader().loadAsync('assets/characters/wolf.glb?v=45'),stride=gltf.parser.json.animations.find(a=>a.name==='run').extras?.stride||.78,reduced=matchMedia('(prefers-reduced-motion: reduce)');
+ const gltf=await new GLTFLoader().loadAsync('assets/characters/wolf.glb?v=47'),stride=gltf.parser.json.animations.find(a=>a.name==='run').extras?.stride||.78,reduced=matchMedia('(prefers-reduced-motion: reduce)');
  return Array.from({length:6},()=>{
   const root=new THREE.Group(),skin=clone(gltf.scene),mixer=new THREE.AnimationMixer(skin),actions=Object.fromEntries(gltf.animations.map(c=>[c.name,mixer.clipAction(c)]));
   let current='idle',wasActive=false,previousHit=0,hold=0,hpClock=0,arrival=0,exitClock=0;root.add(skin);scene.add(root);root.visible=false;

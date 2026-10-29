@@ -1,10 +1,10 @@
 // Isolated renderer fixture: never imports save/load, never touches browser storage.
-import {makeWorld,LOCATIONS} from '../src/world.js?v=45';
-import {loadActor,loadWolves} from '../src/actors.js?v=45';
-import {initial,offer,advance,interval,yieldFor,crewInterval,crewYield,gather,dropSupply,purchase,PLAYER_SPEED,GATHER_SECONDS,DROP_SECONDS,axeAngleAt} from '../src/core.js?v=45';
-import {route,pointOn,travelProgress,distance,setNavigationState} from '../src/navigation.js?v=45';
-import {beginWatch,tickWatch} from '../src/encounter.js?v=45';
-import {TREES} from '../src/forest.js?v=45';
+import {makeWorld,LOCATIONS} from '../src/world.js?v=47';
+import {loadActor,loadWolves} from '../src/actors.js?v=47';
+import {initial,offer,advance,interval,yieldFor,crewInterval,crewYield,gather,dropSupply,purchase,PLAYER_SPEED,GATHER_SECONDS,DROP_SECONDS,axeAngleAt} from '../src/core.js?v=47';
+import {route,pointOn,travelProgress,distance,setNavigationState} from '../src/navigation.js?v=47';
+import {beginWatch,tickWatch} from '../src/encounter.js?v=47';
+import {TREES} from '../src/forest.js?v=47';
 const $=id=>document.getElementById(id),canvas=$('world'),world=makeWorld(canvas);
 const [mara,rowan,crew,wolves,porter]=await Promise.all([loadActor('mara',world.scene,world.palette),loadActor('rowan',world.scene,world.palette),loadActor('rowan',world.scene,world.palette),loadWolves(world.scene),loadActor('rowan',world.scene,world.palette),world.ready]);
 const paths=Object.fromEntries(['wood','food'].map(k=>[k,{out:[LOCATIONS.rowan,...route(LOCATIONS.rowan,LOCATIONS[k])],back:[LOCATIONS[k],...route(LOCATIONS[k],LOCATIONS.rowan)]}])),timber={out:[LOCATIONS.mill,...route(LOCATIONS.mill,LOCATIONS.timber)],back:[LOCATIONS.timber,...route(LOCATIONS.timber,LOCATIONS.mill)]};

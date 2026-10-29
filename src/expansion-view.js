@@ -1,6 +1,6 @@
-import {EXP_LOCATIONS,MINER_BASE,minerInterval,ROCKS,rockAlive} from './expansion.js?v=45';
-import {groundHeight} from './forest.js?v=45';
-import {route,pointOn,travelProgress} from './navigation.js?v=45';
+import {EXP_LOCATIONS,MINER_BASE,minerInterval,ROCKS,rockAlive} from './expansion.js?v=47';
+import {groundHeight} from './forest.js?v=47';
+import {route,pointOn,travelProgress} from './navigation.js?v=47';
 
 // Geometry is built once; production, purchases and contacts only animate this bounded set.
 export function makeExpansionView(world,{group,cube,mesh,roof,crate,lamp,path,supplyPad,batch},reduced){

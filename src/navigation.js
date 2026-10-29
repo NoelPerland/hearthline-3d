@@ -1,7 +1,7 @@
-import {COMMERCE_BUILDINGS,COMMERCE_LOCATIONS} from './commerce.js?v=45';
-import {SECTORS,SCENERY_TREES,CAMP_RADIUS,ALL_TREES as TREES,sectorOpen,treeAlive,clearedCount} from './forest.js?v=45';
-import {LODGE} from './town.js?v=45';
-import {RIDGE_BOUNDS,RIDGE_LANES,RIDGE_TREES,ROCKS,rockAlive} from './expansion.js?v=45';
+import {COMMERCE_BUILDINGS,COMMERCE_LOCATIONS} from './commerce.js?v=47';
+import {SECTORS,SCENERY_TREES,CAMP_RADIUS,ALL_TREES as TREES,sectorOpen,treeAlive,clearedCount} from './forest.js?v=47';
+import {LODGE} from './town.js?v=47';
+import {RIDGE_BOUNDS,RIDGE_LANES,RIDGE_TREES,ROCKS,rockAlive} from './expansion.js?v=47';
 // Small lane graph, deterministic shortest paths. No actor or economy imports.
 let access=null;
 export function setNavigationState(state){access=state;}

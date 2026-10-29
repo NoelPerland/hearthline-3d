@@ -61,3 +61,14 @@ body{display:grid;place-items:center;min-height:100dvh;background:radial-gradien
 #game{width:min(100vw,56.25dvh);height:min(100dvh,177.7778vw);min-height:0;box-shadow:0 0 70px #071c3280}
 .inventory-card{max-height:calc(100% - 20px);overflow:auto;padding:24px 18px}.inventory-card h2{margin-top:5px}
 .inventory-stocks{display:grid;grid-template-columns:1fr 1fr;gap:8px}.inventory-stocks div,.inventory-gear button{background:#dce4cd;border:1px solid #a8bba3;border-radius:10px;padding:10px}.inventory-stocks b{display:block;font-size:24px}.inventory-gear{display:grid;gap:8px;margin-top:16px}.inventory-gear button{text-align:left;min-height:58px;width:100%}.inventory-gear small{display:block;margin-top:4px}.inventory-gear [aria-pressed=true]{background:#315e62;color:#fff4d2}
+
+.move-click{position:absolute;z-index:5;pointer-events:none;width:24px;height:24px;border:2px solid #b3fff3;border-radius:50%;transform:translate(-50%,-50%);box-shadow:0 0 0 5px #45d4d344}
+@media(prefers-reduced-motion:no-preference){
+ .move-click{animation:move-click .6s ease-out both}
+ .modal:not([hidden])>section{animation:panel-arrive .22s cubic-bezier(.2,.8,.2,1) both}
+ .view-controls button,nav button,.worker button,#production-toggle{transition:transform .12s ease,filter .12s ease}
+ .view-controls button:hover,nav button:hover{filter:brightness(1.12)}
+ nav button:active,.view-controls button:active{transform:translateY(2px) scale(.94)}
+ @keyframes move-click{from{opacity:1;transform:translate(-50%,-50%) scale(.4)}to{opacity:0;transform:translate(-50%,-50%) scale(2.6)}}
+ @keyframes panel-arrive{from{opacity:0;transform:translateY(12px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+}

@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import {ALL_TREES as TREES,PERMANENT_TREES,SCENERY_TREES,JOB_TREES,SECTORS,sectorOpen,groundHeight,treePresent,treeDamage,treeCleared} from './forest.js?v=45';
+import {ALL_TREES as TREES,PERMANENT_TREES,SCENERY_TREES,JOB_TREES,SECTORS,sectorOpen,groundHeight,treePresent,treeDamage,treeCleared} from './forest.js?v=47';
 
 export function makeForestView(parent,geometry,palette,reduced){
  const parts=[{key:'cylinder',mat:'darkWood',p:[0,.84,0],s:[.17,1.68,.17]},...Array.from({length:3},(_,i)=>[{key:'crown',mat:i%2?'pine':'pineDark',p:[0,1.82+i*.68,0],s:[1.05-i*.24,1.06,1.05-i*.24]},{key:'crown',mat:'snow',p:[0,2.12+i*.68,0],s:[(1.05-i*.24)*.88,1.06*.82,(1.05-i*.24)*.88]}]).flat()];

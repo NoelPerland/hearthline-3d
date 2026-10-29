@@ -1,4 +1,4 @@
-import {RIDGE_TREES} from './expansion.js?v=45';
+import {RIDGE_TREES} from './expansion.js?v=47';
 // Stable logical sites shared by economy, navigation and instanced presentation.
 export const SECTORS=[
  {name:'Woodlot',centers:[[-6.3,-4.8],[-9,-6.2],[-5.3,-7.6],[-8.4,-8.7]],count:10,hp:6,bounds:[-11,-3,-10,-3]},

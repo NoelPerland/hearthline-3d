@@ -1,14 +1,14 @@
-import {COMMERCE_LOCATIONS} from './commerce.js?v=45';
-import {makeCommerceView} from './commerce-view.js?v=45';
+import {COMMERCE_LOCATIONS} from './commerce.js?v=47';
+import {makeCommerceView} from './commerce-view.js?v=47';
 import * as THREE from 'three';
 import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
 import {RoundedBoxGeometry} from 'three/addons/geometries/RoundedBoxGeometry.js';
-import {interval,yieldFor,axeStats,offer,crewYield,crewInterval,shipmentStatus} from './core.js?v=45';
-import {SECTORS,ALL_TREES as TREES,groundHeight,clearedCount,sectorOpen,treeDamage,treeCleared} from './forest.js?v=45';
-import {LODGE,LODGE_APPROACH,townUnlocked,jobSpec} from './town.js?v=45';
-import {EXP_LOCATIONS} from './expansion.js?v=45';
-import {makeExpansionView} from './expansion-view.js?v=45';
-import {makeForestView} from './forest-view.js?v=45';
+import {interval,yieldFor,axeStats,offer,crewYield,crewInterval,shipmentStatus} from './core.js?v=47';
+import {SECTORS,ALL_TREES as TREES,groundHeight,clearedCount,sectorOpen,treeDamage,treeCleared} from './forest.js?v=47';
+import {LODGE,LODGE_APPROACH,townUnlocked,jobSpec} from './town.js?v=47';
+import {EXP_LOCATIONS} from './expansion.js?v=47';
+import {makeExpansionView} from './expansion-view.js?v=47';
+import {makeForestView} from './forest-view.js?v=47';
 
 export const LOCATIONS={home:[1.8,2.3],wood:[-5.8,-3.9],food:[-4.8,6.6],store:[-4,3.6],rowan:[-3.4,4],workshop:[6,3.7],mill:[6,-1.3],timber:[8,-5],lodge:LODGE_APPROACH,...EXP_LOCATIONS,...COMMERCE_LOCATIONS,collect:[-20.8,.7]};
 export function makeWorld(canvas){
@@ -47,7 +47,7 @@ export function makeWorld(canvas){
  function crate(p,x,y,z){const c=group(p,x,z);c.position.y=y;cube(c,'wood',0,.24,0,.57,.48,.5);for(const dx of [-.18,.18])cube(c,'teal',dx,.24,.26,.055,.5,.035);cube(c,'darkWood',0,.48,0,.59,.04,.52);return c;}
  function lamp(p,x,z){cube(p,'darkWood',x,.75,z,.1,1.5,.1);cube(p,'gold',x,1.5,z,.24,.28,.24);cube(p,'roof',x,1.69,z,.36,.10,.36);}
  const home=group(world,0,-2.25),levels=[];
- const ready=new GLTFLoader().loadAsync('assets/buildings/cabin.glb?v=45').then(gltf=>{
+ const ready=new GLTFLoader().loadAsync('assets/buildings/cabin.glb?v=47').then(gltf=>{
   for(const name of ['Damaged','HomeI','HomeII']){const g=gltf.scene.getObjectByName(name);g.traverse(o=>{if(o.isMesh){o.castShadow=true;o.receiveShadow=true;}});home.add(g);levels.push(g);}
  });
  const hearth=group(world,0,1.15);for(let i=0;i<10;i++){const a=i*Math.PI/5;mesh(hearth,'rock','stone',Math.cos(a)*.62,.15,Math.sin(a)*.62,.22,.25,.25);}

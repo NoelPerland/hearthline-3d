@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import * as c from '../src/core.js';
-import * as n from '../src/navigation.js?v=45';
+import * as n from '../src/navigation.js?v=47';
 let s=c.initial();assert.equal(c.purchase(s,'build'),false);c.gather(s,'wood');c.gather(s,'wood');c.gather(s,'food');assert(c.purchase(s,'build'));assert.equal(s.gold,13);const after=JSON.stringify(s);assert.equal(c.purchase(s,'build'),false);assert.equal(JSON.stringify(s),after);assert(c.purchase(s,'recruit'));assert.equal(s.workers,1);assert.equal(s.wood,5);assert.equal(s.food,3);assert.equal(s.gold,18);assert.equal(c.purchase(s,'recruit'),false);c.advance(s,3.5);assert(c.purchase(s,'upgrade'));assert.equal(s.level,2);assert.equal(s.workerClock,3.125);assert.equal(s.gold,24);assert.equal(c.purchase(s,'upgrade'),false);
 for(const mode of ['balanced','wood','food']){const a={...s,workerMode:mode,workerType:mode==='food'?'food':'wood'},b=structuredClone(a);for(let i=0;i<9000;i++)c.advance(a,.1);c.advance(b,900);assert(Math.abs(a.workerClock-b.workerClock)<1e-7);for(const k of ['wood','food','gold','deliveries','workerType'])assert.equal(a[k],b[k],mode+' parity '+k);}
 let pad=c.initial();pad.wood=6;pad.food=3;assert.equal(c.dropSupply(pad),'wood');assert.equal(c.dropSupply(pad),'wood');pad=c.normalize(JSON.parse(JSON.stringify(pad)));assert.equal(pad.supplied.wood,2);assert.equal(c.offer(pad).wood,3);for(let i=0;i<6;i++)assert(c.dropSupply(pad));assert.equal(c.dropSupply(pad),null);assert.deepEqual(pad.supplied,{action:'build',wood:5,food:3});assert.equal(pad.wood,1);assert.equal(pad.food,0);assert(c.purchase(pad,'build'));assert.equal(pad.wood,1,'escrow is not charged twice');assert.equal(pad.gold,10);assert.equal(c.purchase(pad,'build'),false);assert.deepEqual(pad.supplied,{wood:0,food:0});assert.equal(c.dropSupply(pad),null);
@@ -196,7 +196,7 @@ assert(mainSource.includes("$('order-mode').hidden=!s.home3")&&mainSource.includ
 console.log('PASS: unlocked shipment previews, protected construction deficits, unchanged paid snapshots, honest queue feedback and actionable gated objectives.');
 
 // Return loop uses separate managed IDs, the existing processor and the bounded encounter.
-import * as town from '../src/town.js?v=45';
+import * as town from '../src/town.js?v=47';
 const townCamp=()=>{const s=structuredClone(frontier);s.returns=1;s.town=town.initialTown();s.wood=300;s.food=300;s.gold=300;s.orders.reserved=false;s.orders.queued=false;s.orders.enabled=true;return s;};
 let jobs=townCamp();n.setNavigationState(jobs);assert(town.townUnlocked(jobs));assert.equal(f.TREES.length,75);assert.equal(f.JOB_TREES.length,36);assert.equal(c.offer(jobs).action,'lodge0');assert(c.offer(jobs).gated);assert(!c.purchase(jobs,'lodge0'));
 const permanent=JSON.stringify(jobs.forest);assert(town.startJob(jobs,'timber'));assert(!town.startJob(jobs,'supply'));

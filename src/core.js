@@ -1,7 +1,7 @@
-import {initialCommerce,normalizeCommerce,COMMERCE_RECIPES,commerceAction,commerceGate,tickCommerce} from './commerce.js?v=45';
-import {TREES,SCENERY_TREES,CAMP_RADIUS,ALL_TREES,ALL_TREE_BY_ID,clearedCount,treeAlive,treeStand,sweepPass} from './forest.js?v=45';
-import {initialTown,normalizeTown,townUnlocked,jobShipment} from './town.js?v=45';
-import {initialExpansion,normalizeExpansion,expansionAction,expansionGate,EXPANSION_RECIPES,buyExpansion,minerInterval,minerYield} from './expansion.js?v=45';
+import {initialCommerce,normalizeCommerce,COMMERCE_RECIPES,commerceAction,commerceGate,tickCommerce} from './commerce.js?v=47';
+import {TREES,SCENERY_TREES,CAMP_RADIUS,ALL_TREES,ALL_TREE_BY_ID,clearedCount,treeAlive,treeStand,sweepPass} from './forest.js?v=47';
+import {initialTown,normalizeTown,townUnlocked,jobShipment} from './town.js?v=47';
+import {initialExpansion,normalizeExpansion,expansionAction,expansionGate,EXPANSION_RECIPES,buyExpansion,minerInterval,minerYield} from './expansion.js?v=47';
 export const SAVE_KEY='hearthline-3d-save-v1';
 export const PLAYER_SPEED=6.6,GATHER_SECONDS=.52,REGROW_SECONDS=.18,DROP_SECONDS=.08;
 export const WEAPONS=Object.freeze({hatchet:{damage:2,range:1.8,cooldown:.9},spear:{damage:4,range:2.6,cooldown:.8},bow:{damage:3,range:5.2,cooldown:.65},sword:{damage:2,range:1.9,cooldown:.32}});
