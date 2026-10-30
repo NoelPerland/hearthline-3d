@@ -9,10 +9,10 @@ A playable, portrait-first strategy game about rebuilding a snowy frontier. Gath
 Serve this directory over HTTP, then open `http://localhost:8767/`:
 
 ```sh
-python -m http.server 8767
+npx --yes http-server . -p 8767 -c-1
 ```
 
-The game has no build step. Three.js 0.186.0 and the required loaders are bundled under `vendor/three/` so the game loads without a third-party script CDN. A network connection is only used for the optional Google font; system fonts are the fallback.
+Requires Node.js for the command above. Alternatively use `python -m http.server 8767` if Python is installed. The game has no build step. Three.js 0.186.0 and the required loaders are bundled under `vendor/three/` so the game loads without a third-party script CDN. A network connection is only used for the optional Google font; system fonts are the fallback.
 
 ## Controls and progression
 
@@ -31,3 +31,5 @@ The game has no build step. Three.js 0.186.0 and the required loaders are bundle
 This is a finite playable frontier build, with local browser saves and no account or cloud sync. Desktop browser loading and the opening flow have been verified. Physical phone performance, touch comfort, and speaker mix still need device testing before a mobile release.
 
 Three.js is distributed under the [MIT license](vendor/three/LICENSE).
+
+Storage access denied by browser privacy settings no longer prevents startup. The camp remains playable for the open tab and reports that saving failed; persistence cannot be guaranteed while storage is blocked. Regression checks cover a throwing storage getter and failed writes.

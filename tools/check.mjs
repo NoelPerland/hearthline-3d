@@ -246,3 +246,13 @@ const sceneryWatch=townCamp();sceneryWatch.frontierWon=false;sceneryWatch.weapon
 await import('./check-expansion.mjs');
 
 await import('./check-commerce.mjs');
+
+// Storage access itself can throw when browser persistence is disabled.
+const deniedBrowser={get localStorage(){throw new Error('SecurityError');}};
+assert.equal(c.browserStorage(deniedBrowser),null);
+const deniedLoad=c.load(c.browserStorage(deniedBrowser),'denied',1000);
+assert.equal(deniedLoad.error,true);
+assert.equal(deniedLoad.saved,false);
+assert.equal(deniedLoad.state.stage,0);
+assert.equal(c.save(null,deniedLoad.state,'denied'),false);
+assert.equal(c.browserStorage({localStorage:storage}),storage);

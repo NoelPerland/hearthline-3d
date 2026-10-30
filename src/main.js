@@ -5,7 +5,7 @@ import {makeWorld,LOCATIONS} from './world.js?v=47';
 import {loadActor,loadWolves} from './actors.js?v=47';
 import {createSoundscape} from './audio.js?v=47';
 import {route,pointOn,travelProgress,distance,walkable,clear,setNavigationState,WATCH_POST} from './navigation.js?v=47';
-import {load,save,offer,purchase,claimWatch,claimFrontier,dropSupply,gather,advance,interval,yieldFor,axeStats,axeAngleAt,weaponStats,shipmentRecipe,shipmentStatus,shipWood,chopTree,cutSweep,crewInterval,crewYield,PLAYER_SPEED,DROP_SECONDS,GATHER_SECONDS,REGROW_SECONDS,SAVE_KEY} from './core.js?v=47';
+import {browserStorage,load,save,offer,purchase,claimWatch,claimFrontier,dropSupply,gather,advance,interval,yieldFor,axeStats,axeAngleAt,weaponStats,shipmentRecipe,shipmentStatus,shipWood,chopTree,cutSweep,crewInterval,crewYield,PLAYER_SPEED,DROP_SECONDS,GATHER_SECONDS,REGROW_SECONDS,SAVE_KEY} from './core.js?v=47';
 import {ALL_TREES as TREES,ALL_TREE_BY_ID as TREE_BY_ID,clearedCount,treeAlive,treeApproach,sectorOpen} from './forest.js?v=47';
 import {beginWatch,beginConvoy,tickWatch,watchTarget} from './encounter.js?v=47';
 import {townUnlocked,jobSpec,JOB_NAMES,startJob,claimJob,leaveJob,tickJob,LODGE,LODGE_APPROACH} from './town.js?v=47';
@@ -13,7 +13,7 @@ import {EXP_LOCATIONS,MINER_BASE,ROCKS,ROCK_BY_ID,rockAlive,mineRock,collectSton
 const $=id=>document.getElementById(id),canvas=$('world'),world=makeWorld(canvas),reduced=matchMedia('(prefers-reduced-motion: reduce)');
 const movement=createMovementEffects(world.scene,world.heightAt,reduced);
 const review=new URLSearchParams(location.search).get('review'),key=review&&/^[a-z0-9-]+$/.test(review)?SAVE_KEY+'-review-'+review:SAVE_KEY;
-const loaded=load(localStorage,key),s=loaded.state;
+const storage=browserStorage(),loaded=load(storage,key),s=loaded.state;
 if(review)import('../tools/native-capture.js?v=47').then(m=>m.setAudioCapture(()=>audio.captureStream(),playing=>{reviewPlayback=playing;audio.setActive(started&&!document.hidden&&!playing);}));
 setNavigationState(s);LOCATIONS.ship=[3.4,-1.3];
 if(!walkable(s.mara))s.mara=[0,3.5];
@@ -30,7 +30,7 @@ function resetHint(){idleSeconds=0;hintNode=null;}
 $('game').addEventListener('pointerdown',resetHint);
 function actorFeedback(actor,kind,volume){const pose=actor.pose,action=actor.actions[pose],phase=action.time/action.getClip().duration,bucket=Math.floor(phase*(pose==='work'?4:2)),last=contactBeats.get(actor)||{pose,bucket,hits:0};if(last.pose===pose&&bucket!==last.bucket){if(pose==='walk'||pose==='carry')sound('step',volume);else if(pose==='work'&&bucket===3&&!(actor===mara&&(kind==='wood'||kind==='stone'))){if(actor!==crew&&kind!=='stone')world.hit(kind);sound(kind==='wood'||kind==='stone'?'chop':'pick',volume);if(++last.hits%3===0)sound('grunt',volume*.7);}}if(actor===rowan&&last.pose==='work'&&pose==='carry')world.harvest(kind);last.pose=pose;last.bucket=bucket;contactBeats.set(actor,last);}
 function toast(text){$('toast').textContent=text;$('toast').classList.add('visible');toastClock=2.6;}
-function commit(){if(!save(localStorage,s,key))toast('Storage is full. Keep this camp open.');}
+function commit(){if(!save(storage,s,key))toast('Camp could not be saved. Keep this tab open.');}
 function reward(text,position,kind='wood'){if(reduced.matches){toast(text);return;}const harvest=kind==='wood'&&text.startsWith('▰ +'),now=performance.now();if(harvest&&woodPop?.isConnected&&now-woodPopAt<250){woodPopAmount+=Number(text.slice(3));woodPop.textContent='▰ +'+woodPopAmount;return;}const el=document.createElement('span'),p=world.project(position,1.1);el.className='reward';el.dataset.kind=kind;el.textContent=text;if(harvest){woodPop?.remove();woodPop=el;woodPopAmount=Number(text.slice(3));woodPopAt=now;}el.style.left=p.x+'px';el.style.top=p.y+'px';$('game').append(el);el.addEventListener('animationend',()=>el.remove());}
 function cancel(){movement.clear();intercepting=false;intent=null;path=[];working=0;dropClock=0;buildClock=0;guided=false;resetHint();}
 function onPad(o){const p=world.upgradePads[o.node]?.root.position;return !!p&&Math.abs(s.mara[0]-p.x)<2.2&&Math.abs(s.mara[1]-p.z)<1.25;}

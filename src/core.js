@@ -112,6 +112,7 @@ export function advance(s,seconds){
   reserveOrder(s);
  }return result;
 }
+export function browserStorage(browser=globalThis){try{return browser.localStorage;}catch{return null;}}
 export function load(storage,key=SAVE_KEY,now=Date.now()){
  let raw=null,error=false,saved=true;try{raw=JSON.parse(storage.getItem(key)||'null');}catch{error=true;}
  if(raw&&raw.version===1&&!raw.progression){try{if(!storage.getItem(key+'-pre-progression'))storage.setItem(key+'-pre-progression',JSON.stringify(raw));}catch{saved=false;}}
